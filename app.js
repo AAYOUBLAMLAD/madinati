@@ -45,3 +45,13 @@ if (locationBtn) {
         );
     });
 }
+
+// === إرسال التبليغ (نسخة مؤقتة - قيد التطوير) ===
+const reportForm = document.getElementById('report-form');
+
+if (reportForm) {
+    reportForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        alert('⚠️ ميزة إرسال التبليغات قيد التطوير حالياً وستُفعَّل قريباً بعد إطلاق الخادم الآمن.\n\nشكراً لتفهمك وصبرك على مدينتي!');
+    });
+}
