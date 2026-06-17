@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إرسال تبليغ - مدينتي</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">🏙️ مدينتي</div>
+        <nav>
+            <a href="index.html">الرئيسية</a>
+            <a href="report.html">إرسال تبليغ</a>
+            <a href="track.html">تتبع تبليغ</a>
+        </nav>
+    </header>
+
+    <section class="form-section">
+        <h1>إرسال تبليغ جديد</h1>
+        <p>صف المشكلة التي تواجهها وسنحرص على معالجتها في أقرب وقت.</p>
+
+        <form id="report-form">
+
+            <label for="problem-type">نوع المشكلة</label>
+            <select id="problem-type" required>
+                <option value="">-- اختر نوع المشكلة --</option>
+                <option value="طرق">حفر ومشاكل الطرق</option>
+                <option value="إنارة">إنارة عمومية</option>
+                <option value="نفايات">نفايات وتنظيف</option>
+                <option value="مياه">مشاكل المياه</option>
+                <option value="أخرى">أخرى</option>
+            </select>
+
+            <label for="description">وصف المشكلة</label>
+            <textarea id="description" rows="4" placeholder="اكتب وصفاً تفصيلياً للمشكلة..." required></textarea>
+
+            <label for="photo">صورة المشكلة</label>
+<input type="file" id="photo" accept="image/*">
+            <img id="photo-preview" style="display:none; max-width:100%; margin-top:10px; border-radius:8px;">
+
+            <label for="location">الموقع الجغرافي</label>
+            <button type="button" id="get-location-btn" class="btn-location">📍 تحديد موقعي الحالي</button>
+            <p id="location-status"></p>
+            <input type="hidden" id="latitude">
+            <input type="hidden" id="longitude">
+            <label for="phone">رقم الهاتف (اختياري)</label>
+            <input type="tel" id="phone" placeholder="06XXXXXXXX">
+
+            <button type="submit" class="btn btn-primary full-width">إرسال التبليغ</button>
+
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2026 منصة مدينتي - طانطان. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

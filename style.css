@@ -120,3 +120,73 @@ footer {
     color: white;
     font-size: 14px;
 }
+/* قسم النموذج */
+.form-section {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(13, 71, 161, 0.1);
+}
+
+.form-section h1 {
+    color: #0d47a1;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.form-section > p {
+    color: #5a6b85;
+    margin-bottom: 25px;
+}
+
+#report-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#report-form label {
+    margin-top: 15px;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #1a2b4c;
+}
+
+#report-form select,
+#report-form textarea,
+#report-form input[type="text"],
+#report-form input[type="tel"] {
+    padding: 10px;
+    border: 1px solid #c5d3e8;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+    width: 100%;
+}
+
+#report-form select:focus,
+#report-form textarea:focus,
+#report-form input:focus {
+    outline: none;
+    border-color: #0d47a1;
+}
+
+#report-form input[type="file"] {
+    padding: 10px 0;
+}
+
+.full-width {
+    width: 100%;
+    margin-top: 25px;
+    border: none;
+    cursor: pointer;
+}
+#report-form button.btn-primary {
+    background-color: #0d47a1;
+    color: white;
+}
+
+#report-form button.btn-primary:hover {
+    background-color: #1565c0;
+}
