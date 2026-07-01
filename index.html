@@ -1,52 +1,312 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مدينتي - منصة التدبير الحضري بطانطان</title>
+    <title>منصة مدينتي | منصة البلاغات الذكية</title>
+    <meta name="description" content="منصة مدينتي تتيح للمواطنين الإبلاغ عن مشكلات البنية التحتية وتتبع الحالة حتى الحل.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: '#0F4C81',
+              secondary: '#1565C0',
+              accent: '#FFC107',
+              success: '#2E7D32',
+              surface: '#F8FAFC',
+              text: '#1F2937'
+            },
+            boxShadow: {
+              soft: '0 24px 80px rgba(15, 76, 129, 0.12)',
+              glow: '0 35px 90px rgba(15, 76, 129, 0.14)'
+            }
+          }
+        }
+      }
+    </script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-page="home" class="page-wrapper min-h-screen bg-surface text-text dark:bg-slate-950 dark:text-slate-100 transition-colors duration-500">
+<header class="site-header sticky top-0 z-50">
+  <div class="site-container site-wrapper">
+    <a href="index.html" class="site-brand text-lg font-semibold text-primary dark:text-white">
+      <span class="brand-mark">🏙️</span>
+      <span class="brand-title">منصة مدينتي</span>
+    </a>
+    <nav class="nav-list hidden lg:flex">
+      <a href="index.html" class="nav-link">الرئيسية</a>
+      <a href="report.html" class="nav-link">إرسال بلاغ</a>
+      <a href="track.html" class="nav-link">تتبع البلاغات</a>
+      <a href="#stats" class="nav-link">الإحصائيات</a>
+      <a href="#contact" class="nav-link">تواصل معنا</a>
+    </nav>
+    <div class="site-actions">
+      <button id="theme-toggle" type="button" aria-label="تغيير النمط" class="btn btn-secondary h-11 w-11 p-0 text-lg">🌙</button>
+      <a href="admin.html" class="btn btn-primary">تسجيل الدخول</a>
+    </div>
+  </div>
+</header>
+<main class="overflow-hidden">
+  <section class="relative overflow-hidden bg-gradient-to-br from-primary/90 via-blue-700 to-slate-900 px-4 py-16 text-white sm:px-6 lg:px-8">
+    <div class="absolute inset-x-0 top-0 h-72 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.15),_transparent_35%)]"></div>
+    <div class="absolute inset-x-0 bottom-0 h-64 bg-[radial-gradient(circle_at_bottom_right,_rgba(255,255,255,0.1),_transparent_40%)]"></div>
+    <div class="relative mx-auto flex max-w-7xl flex-col gap-12 lg:flex-row lg:items-center lg:gap-16 hero-section">
+      <div class="relative max-w-2xl space-y-6 lg:pr-10 hero-content">
+        <span class="inline-flex rounded-full bg-white/10 px-4 py-2 text-sm text-slate-100/90 ring-1 ring-white/10">شاركونا في تحسين جودة المدينة</span>
+        <h1 class="max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl">ساهم في تحسين مدينتك</h1>
+        <p class="max-w-xl text-lg leading-8 text-slate-200/90">أبلغ عن المشكلات في الطرق والإنارة والنظافة والمرافق العامة بسهولة وسرعة، وتابع الحالة حتى الحل النهائي.</p>
+        <div class="flex flex-col gap-4 sm:flex-row">
+          <a href="report.html" class="btn btn-primary">إرسال بلاغ جديد</a>
+          <a href="track.html" class="btn" style="background:#ffffff; color:#0F4C81; border:1px solid rgba(15,76,129,0.25);">تتبع بلاغ</a>
 
-    <!-- الشريط العلوي -->
-    <header class="navbar">
-        <div class="logo">🏙️ مدينتي</div>
-        <nav>
-            <a href="index.html">الرئيسية</a>
-            <a href="report.html">إرسال تبليغ</a>
-            <a href="track.html">تتبع تبليغ</a>
-        </nav>
-    </header>
-
-    <!-- قسم الترحيب -->
-    <section class="hero">
-        <h1>منصة مدينتي</h1>
-        <p>شارك في تحسين مدينتك! بلّغ عن أي خلل حضري في طانطان وتابع حالته بسهولة.</p>
-        <a href="report.html" class="btn btn-primary">إرسال تبليغ جديد</a>
-        <a href="track.html" class="btn btn-secondary">تتبع تبليغ سابق</a>
-    </section>
-
-    <!-- قسم الإحصائيات -->
-    <section class="stats">
-        <div class="stat-box">
-            <h2 id="resolved-count">0</h2>
-            <p>تبليغ تم حله</p>
         </div>
-        <div class="stat-box">
-            <h2 id="pending-count">0</h2>
-            <p>تبليغ قيد المعالجة</p>
+      </div>
+      <div class="relative max-w-2xl">
+        <div class="hero-illustration overflow-hidden rounded-[32px] border border-white/10 bg-white/10 p-6 shadow-glow backdrop-blur-xl">
+          <div class="absolute -right-10 -top-12 h-24 w-24 rounded-full bg-[#FFC107]/20 blur-2xl"></div>
+          <div class="absolute -left-12 bottom-0 h-32 w-32 rounded-full bg-white/10 blur-2xl"></div>
+          <div class="relative rounded-[28px] bg-slate-950/90 p-6 text-slate-100">
+            <div class="mb-6 flex items-center justify-between rounded-3xl bg-slate-800/80 px-4 py-3 ring-1 ring-white/10">
+              <div>
+                <p class="text-xs uppercase tracking-[0.16em] text-slate-400">لوحة المدينة الذكية</p>
+                <p class="mt-2 text-sm">مشكلات مفتوحة</p>
+              </div>
+              <span class="inline-flex rounded-2xl bg-emerald-500/20 px-3 py-2 text-xs font-semibold text-emerald-100">متصلة</span>
+            </div>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div class="rounded-3xl bg-slate-900/90 p-4">
+                <p class="text-sm text-slate-400">الطرق</p>
+                <p class="mt-3 text-2xl font-semibold">123</p>
+              </div>
+              <div class="rounded-3xl bg-slate-900/90 p-4">
+                <p class="text-sm text-slate-400">الإنارة</p>
+                <p class="mt-3 text-2xl font-semibold">58</p>
+              </div>
+              <div class="rounded-3xl bg-slate-900/90 p-4">
+                <p class="text-sm text-slate-400">النظافة</p>
+                <p class="mt-3 text-2xl font-semibold">38</p>
+              </div>
+              <div class="rounded-3xl bg-slate-900/90 p-4">
+                <p class="text-sm text-slate-400">المياه</p>
+                <p class="mt-3 text-2xl font-semibold">21</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="stat-box">
-            <h2 id="total-count">0</h2>
-            <p>إجمالي التبليغات</p>
+      </div>
+    </div>
+  </section>
+  <section id="stats" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mb-12 text-center">
+      <p class="text-sm font-semibold uppercase tracking-[0.24em] text-primary">إحصائيات المنصة</p>
+      <h2 class="mt-4 text-3xl font-semibold text-slate-900 dark:text-white sm:text-4xl">النتائج، الشفافية، والأثر</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-base text-slate-600 dark:text-slate-300">تابع أداء البلاغات ورؤية التقدم الذي يحافظ على مدينتك نظيفة وآمنة.</p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+      <article class="glass-card p-8">
+        <p class="text-sm font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-300">عدد البلاغات</p>
+        <p class="mt-6 text-4xl font-semibold text-primary" id="home-total">0</p>
+      </article>
+      <article class="glass-card p-8">
+        <p class="text-sm font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-300">البلاغات المكتملة</p>
+        <p class="mt-6 text-4xl font-semibold text-success" id="home-resolved">0</p>
+      </article>
+      <article class="glass-card p-8">
+        <p class="text-sm font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-300">متوسط زمن المعالجة</p>
+        <p class="mt-6 text-4xl font-semibold text-secondary" id="home-average">0.0</p>
+        <p class="mt-2 text-sm text-slate-500 dark:text-slate-300">ساعة</p>
+      </article>
+      <article class="glass-card p-8">
+        <p class="text-sm font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-300">عدد المستخدمين</p>
+        <p class="mt-6 text-4xl font-semibold text-primary" id="home-users">0</p>
+      </article>
+    </div>
+  </section>
+  <section class="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
+    <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-[0.24em] text-primary">الخدمات</p>
+        <h2 class="mt-4 text-3xl font-semibold text-slate-900 dark:text-white sm:text-4xl">أبرز مجالات البلاغات</h2>
+      </div>
+      <a href="report.html" class="btn btn-primary">قدم بلاغك الآن</a>
+    </div>
+    <div class="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <article class="service-card">
+        <span class="service-icon">🛣️</span>
+        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">الطرق</h3>
+        <p class="text-slate-600 dark:text-slate-300">إبلاغ عن الحفر، التشققات، والتشققات السريعة لسلامة التنقل.</p>
+      </article>
+      <article class="service-card">
+        <span class="service-icon">💡</span>
+        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">الإنارة</h3>
+        <p class="text-slate-600 dark:text-slate-300">تبليغ عن الأعطال في الأضواء العمومية لضمان الطرق المضاءة ليلاً.</p>
+      </article>
+      <article class="service-card">
+        <span class="service-icon">🗑️</span>
+        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">النظافة</h3>
+        <p class="text-slate-600 dark:text-slate-300">طلب تنظيف المناطق، جمع النفايات، وحلول لمواقع التلوث.</p>
+      </article>
+      <article class="service-card">
+        <span class="service-icon">🚰</span>
+        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">تسرب المياه</h3>
+        <p class="text-slate-600 dark:text-slate-300">الإبلاغ عن التسريبات، ورش المياه، واحتياطات السلامة في الشبكة.</p>
+      </article>
+      <article class="service-card">
+        <span class="service-icon">🌳</span>
+        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">الحدائق</h3>
+        <p class="text-slate-600 dark:text-slate-300">متابعة الأشجار، المساحات الخضراء، والألعاب في المرافق العامة.</p>
+      </article>
+      <article class="service-card">
+        <span class="service-icon">🚦</span>
+        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">إشارات المرور</h3>
+        <p class="text-slate-600 dark:text-slate-300">حل المشاكل المتعلقة بإشارات المرور وأنظمة النقل الذكي.</p>
+      </article>
+    </div>
+  </section>
+  <section id="how" class="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <p class="text-sm font-semibold uppercase tracking-[0.24em] text-primary">كيف تعمل المنصة</p>
+      <h2 class="mt-4 text-3xl font-semibold text-slate-900 dark:text-white sm:text-4xl">خطوات بسيطة لوصول البلاغ إلى الفريق المناسب</h2>
+    </div>
+    <div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+      <div class="timeline-card p-8">
+        <div class="timeline-badge">1</div>
+        <h3 class="mt-6 text-xl font-semibold text-slate-900 dark:text-white">إنشاء البلاغ</h3>
+        <p class="mt-4 text-slate-600 dark:text-slate-300">اختر الفئة، أضف وصفاً واضحاً، وأرفق صورة إن أمكن.</p>
+      </div>
+      <div class="timeline-card p-8">
+        <div class="timeline-badge">2</div>
+        <h3 class="mt-6 text-xl font-semibold text-slate-900 dark:text-white">تحديد الموقع</h3>
+        <p class="mt-4 text-slate-600 dark:text-slate-300">حدد العنوان بدقة أو استخدم موقعك الحالي لتسهيل وصول الفرق.</p>
+      </div>
+      <div class="timeline-card p-8">
+        <div class="timeline-badge">3</div>
+        <h3 class="mt-6 text-xl font-semibold text-slate-900 dark:text-white">مراجعة الجهة المختصة</h3>
+        <p class="mt-4 text-slate-600 dark:text-slate-300">تصل الرسالة إلى الجهات ذات العلاقة وتبدأ عملية التقييم اللازمة.</p>
+      </div>
+      <div class="timeline-card p-8">
+        <div class="timeline-badge">4</div>
+        <h3 class="mt-6 text-xl font-semibold text-slate-900 dark:text-white">حل المشكلة وإغلاق البلاغ</h3>
+        <p class="mt-4 text-slate-600 dark:text-slate-300">يتم تنفيذ الحل والمتابعة حتى يكتمل الإغلاق بشفافية.</p>
+      </div>
+    </div>
+  </section>
+  <section class="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
+    <div class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <div class="glass-card p-8">
+        <p class="text-sm font-semibold uppercase tracking-[0.24em] text-primary">خريطة البلاغات</p>
+        <h2 class="mt-4 text-3xl font-semibold text-slate-900 dark:text-white">ابحث عن موقع المشكلة أو حدد عنواناً</h2>
+        <p class="mt-4 text-slate-600 dark:text-slate-300">انظر إلى موقع البلاغات في المدينة وتابع تدفق الحلول في الوقت الفعلي.</p>
+        <form id="map-search-form" class="mt-8 grid gap-4 sm:grid-cols-[1.2fr_auto]">
+          <input id="map-search-input" type="search" placeholder="ابحث بعنوان أو حي..." class="input-field rounded-3xl border border-slate-200 bg-white px-5 py-4 text-base text-slate-900 outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-slate-900 dark:text-white">
+          <button type="submit" class="btn btn-primary">بحث</button>
+        </form>
+        <p id="map-location" class="mt-4 text-sm text-slate-500 dark:text-slate-300">الموقع الحالي للبلاغات: شارع المدينة - مركز البلدية</p>
+      </div>
+      <div class="map-panel rounded-[32px] p-8 shadow-soft">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-primary">الخريطة التفاعلية</p>
+            <h3 class="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">موقع البلاغ الحالي</h3>
+          </div>
+          <span class="rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold text-primary">تحديث مباشر</span>
         </div>
-    </section>
-
-    <!-- التذييل -->
-    <footer>
-        <p>© 2026 منصة مدينتي - طانطان. جميع الحقوق محفوظة.</p>
-    </footer>
-
-    <script src="app.js"></script>
+        <div class="relative mt-8 overflow-hidden rounded-[28px] border border-slate-200/70 bg-slate-50 p-8 dark:border-slate-700/70 dark:bg-slate-900">
+          <div class="absolute -right-8 top-8 h-32 w-32 rounded-full bg-primary/10 blur-2xl"></div>
+          <div class="h-[320px] rounded-[28px] bg-[radial-gradient(circle_at_center,_rgba(15,76,129,0.15),_transparent_45%)] p-6">
+            <div class="relative h-full rounded-[28px] border border-white/20 bg-slate-950/95 p-6 shadow-lg">
+              <div class="absolute left-6 top-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-white">📍 التقرير الأخير</div>
+              <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=1200&q=60')] bg-cover bg-center opacity-20"></div>
+              <div class="relative flex h-full flex-col justify-end">
+                <div class="max-w-xs rounded-[28px] bg-white/90 p-5 shadow-xl dark:bg-slate-900/95">
+                  <p class="text-sm font-semibold text-slate-600 dark:text-slate-300">شارع الوحدة، الحي التجاري</p>
+                  <p class="mt-3 text-lg font-semibold text-slate-900 dark:text-white">تم إبلاغ عن إنارة معطلة</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="reports" class="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
+    <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-[0.24em] text-primary">تقارير حديثة</p>
+        <h2 class="mt-4 text-3xl font-semibold text-slate-900 dark:text-white sm:text-4xl">آخر البلاغات المرسلة</h2>
+      </div>
+      <a href="track.html" class="btn btn-secondary">عرض الكل</a>
+    </div>
+    <div id="recent-reports" class="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3"></div>
+  </section>
+  <section id="contact" class="bg-slate-950/5 py-16 dark:bg-slate-900/40">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-10 lg:grid-cols-[0.9fr_0.7fr] lg:items-center">
+        <div class="glass-card p-10">
+          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-primary">تواصل معنا</p>
+          <h2 class="mt-4 text-3xl font-semibold text-slate-900 dark:text-white">دعم المواطنين والأسئلة الشائعة</h2>
+          <p class="mt-4 text-slate-600 dark:text-slate-300">هل لديك سؤال؟ فريق الدعم لدينا متواجد دائماً للمساعدة والإرشاد في استخدام المنصة.</p>
+          <div class="mt-8 space-y-4">
+            <div class="flex items-center gap-3 rounded-3xl bg-white/90 p-5 dark:bg-slate-950/90">
+              <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-primary">✉️</span>
+              <div>
+                <p class="text-sm font-semibold">البريد الإلكتروني</p>
+                <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">baladia@gmail.com</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 rounded-3xl bg-white/90 p-5 dark:bg-slate-950/90">
+              <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-secondary/10 text-secondary">📞</span>
+              <div>
+                <p class="text-sm font-semibold">الهاتف</p>
+                <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">+212 6 11223344</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-[32px] border border-slate-200/70 bg-white/80 p-10 shadow-soft backdrop-blur-xl dark:border-slate-700/70 dark:bg-slate-950/80">
+          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-primary">معلومات سريعة</p>
+          <h3 class="mt-4 text-2xl font-semibold text-slate-900 dark:text-white">منصة وطنية ذكية تعمل على تسريع الإصلاحات</h3>
+          <ul class="mt-8 space-y-4 text-slate-600 dark:text-slate-300">
+            <li class="flex gap-3"><span class="mt-1 text-xl">✅</span><span>متابعة حالة البلاغ حتى الإغلاق بالكامل.</span></li>
+            <li class="flex gap-3"><span class="mt-1 text-xl">✅</span><span>واجهة سهلة وسريعة للهواتف والأجهزة اللوحية.</span></li>
+            <li class="flex gap-3"><span class="mt-1 text-xl">✅</span><span>تصميم متوافق مع معايير الوصول والواضح للجميع.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="site-container">
+    <div class="grid gap-10 xl:grid-cols-[1.3fr_0.9fr_0.9fr]">
+      <div class="space-y-4">
+        <p class="text-sm font-semibold uppercase tracking-[0.24em] text-primary">منصة مدينتي</p>
+        <p class="max-w-md text-slate-600 dark:text-slate-300">منصة وطنية للإبلاغ عن أي مشكلات عمرانية ومتابعة الإجراءات بسرعة وشفافية.</p>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-[0.24em] text-slate-800 dark:text-slate-200">روابط سريعة</h3>
+        <ul class="mt-6 space-y-3 text-slate-600 dark:text-slate-400">
+          <li><a href="index.html" class="hover:text-primary dark:hover:text-accent">الرئيسية</a></li>
+          <li><a href="report.html" class="hover:text-primary dark:hover:text-accent">إرسال بلاغ</a></li>
+          <li><a href="track.html" class="hover:text-primary dark:hover:text-accent">تتبع البلاغات</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-[0.24em] text-slate-800 dark:text-slate-200">تابعنا</h3>
+        <div class="mt-6 flex items-center gap-3">
+          <a href="#" class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-100 text-slate-700 transition hover:bg-primary hover:text-white dark:bg-slate-800 dark:text-slate-200"></a>
+          <a href="#" class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-100 text-slate-700 transition hover:bg-primary hover:text-white dark:bg-slate-800 dark:text-slate-200"></a>
+          <a href="#" class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-100 text-slate-700 transition hover:bg-primary hover:text-white dark:bg-slate-800 dark:text-slate-200"></a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-10 border-t border-slate-200/70 pt-6 text-sm text-slate-500 dark:border-slate-800/70 dark:text-slate-400">© 2026 منصة مدينتي. جميع الحقوق محفوظة.</div>
+  </div>
+</footer>
+<div id="toast-container" class="toast-container"></div>
+<script src="app.js" defer></script>
 </body>
 </html>
